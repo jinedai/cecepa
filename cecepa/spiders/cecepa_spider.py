@@ -14,8 +14,8 @@ class LogoSpider(CrawlSpider) : #CrawlSpider”√¿¥±È≤º◊•»°£¨Õ®π˝rules¿¥≤È’“À˘”–∑˚∫
     allowed_domains = ["cecepa.com"]
     start_urls = ["http://www.cecepa.com/artkt/index.html"]
     rules = [
-        Rule(SgmlLinkExtractor(allow=('/artkt/index\d{,3}.html'))),
-        Rule(SgmlLinkExtractor(allow=(r'/artkt/[a-z0-9]+?'), deny=(r'/artkt/all.html')), follow=True, callback="parse_page"),
+        Rule(SgmlLinkExtractor(allow=(r'/artkt/index\d{,3}.html'))),
+        Rule(SgmlLinkExtractor(allow=(r'/artkt/[a-z0-9]+?(/index\d{,2}.html)?'), deny=(r'/artkt/(all|index(_\d+)+?).html')), follow=True, callback="parse_page"),
     ]
 
     def parse_page(self, response) :
